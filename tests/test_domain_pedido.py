@@ -6,7 +6,7 @@
 # pela API. Criamos os objetos diretamente e chamamos seus métodos,
 # validando comportamento esperado em diferentes situações.
 # =============================================================================
-import pytest
+
 from domain.cliente import Cliente
 from domain.produto import Produto
 from domain.pedido import Pedido
@@ -80,7 +80,3 @@ def test_pedido_finalizar_calcula_total_com_regras():
     total = pedido.finalizar()
     assert total == 29.0
     assert pedido.esta_entregue is True
-
-def test_qtd_max_produto_zero():
-    with pytest.raises(ValueError):
-        Pedido(qtd_max_produtos=0)

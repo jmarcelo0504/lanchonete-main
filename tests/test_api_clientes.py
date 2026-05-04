@@ -42,5 +42,3 @@ def test_get_cliente_inexistente(client):
     """
     response = client.get("/clientes/000")
     assert response.status_code == 404
-
-def test_get_cliente_cpf_vazio(client):

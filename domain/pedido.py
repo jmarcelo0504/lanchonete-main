@@ -17,7 +17,7 @@ class Pedido:
 
     _seq = 1
 
-    def __init__(self, cliente: Cliente, qtd_max_produtos: int):
+    def __init__(self, cliente: Cliente, qtd_max_produtos: int, esta_cancelado: bool):
         """Inicializa um novo pedido.
 
         Args:
@@ -33,7 +33,7 @@ class Pedido:
         self.qtd_max_produtos = int(qtd_max_produtos)
         self.listaProdutos: List[Produto] = []
         self.esta_entregue: bool = False
-
+        self.esta_cancelado: bool = False
         if self.qtd_max_produtos <= 0:
             raise ValueError("Quantidade máxima deve ser maior que zero")
 
@@ -80,3 +80,14 @@ class Pedido:
         for p in self.listaProdutos:
             total += p.preco_final()
         return float(total)
+
+    def cancelar(self) -> bool:
+        if self.esta_entregue:
+            return False
+
+        if self.esta_cancelado:
+            return False
+
+        # TODO: marcar o pedido como cancelado
+
+        return True
